@@ -1,0 +1,43 @@
+.color-primary {
+    color: var(--primary-color);
+}
+
+.color-secondary {
+    color: var(--secondary-color);
+}
+
+.color-accent {
+    color: var(--accent-color);
+}
+
+.color-danger {
+    color: var(--danger-color);
+}
+
+.bg-primary {
+    background-color: var(--primary-color);
+}
+
+.bg-secondary {
+    background-color: var(--secondary-color);
+}
+
+.bg-accent {
+    background-color: var(--accent-color);
+}
+
+.bg-danger {
+    background-color: var(--danger-color);
+}
+
+.bg-background {
+    background-color: var(--background-color);
+}
+
+.w-full {
+    width: 100%;
+}
+
+.h-full {
+    height: 100%;
+}
