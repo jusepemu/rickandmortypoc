@@ -1,0 +1,88 @@
+<header class="text-white bg-purple-900">
+    <nav class="container mx-auto flex justify-between items-center p-4">
+        <figure class="w-32 h-16">
+            <a routerLink="home">
+                <img src="https://res.cloudinary.com/dkfzj9tmk/image/upload/v1677166689/backend-project/Rick-And-Morty-Logo-Transparent-File_arpmel.png"
+                    alt="logo" class="w-full h-full object-contain">
+            </a>
+        </figure>
+        <ul class="flex gap-4">
+            <li>Characters</li>
+            <li>Episodes</li>
+            <li>My favorites</li>
+            <li>
+                <a routerLink="/about" class="hover:underline">
+                    About
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="w-full h-full">
+    <section class="bg-gradient-to-t from-purple-500 to-purple-900 py-20 flex gap-4">
+        <div class="container mx-auto text-white flex flex-col md:flex-row items-center gap-10 h-96">
+            <header class="flex flex-col gap-6 md:1/2 lg:1/3">
+                <h4 class="text-7xl font-semibold">The Ricky and Morty API</h4>
+                <p class="text-xl font-light">Explore the multiverse with Rick and Morty. Discover characters, episodes,
+                    and fun facts from the most irreverent animated series in the cosmos. Get ready for interdimensional
+                    adventures and plenty of sci-fi humor!</p>
+                <a class="max-w-2xs p-4 rounded-md bg-white text-black" href="https://rickandmortyapi.com/"
+                    target="_blank">More info</a>
+            </header>
+            <figure>
+                <img src="https://www.freepnglogos.com/uploads/rick-and-morty-png/rick-and-morty-portal-shoes-white-clothing-zavvi-23.png"
+                    alt="hero image">
+            </figure>
+        </div>
+    </section>
+    <section class="py-20 relative overflow-hidden">
+        <header class="text-center mb-12">
+            <h4 class="text-7xl font-semibold">The Challenge</h4>
+        </header>
+        <figure class="absolute bottom-0 right-10 opacity-60">
+            <img ngSrc="rm-01.png" alt="challenge" width="300" height="300">
+        </figure>
+        <figure class="absolute top-10 -left-6 rotate-90 opacity-70">
+            <img ngSrc="https://static.wikia.nocookie.net/rickandmorty/images/4/41/Pickle_rick_transparent_edgetrimmed.png" alt="challenge" width="150" height="1500">
+        </figure>
+        
+        <div class="container mx-auto text-center relative items-center">
+            <p class="max-w-3xl mx-auto text-xl py-10 text-left">The challenge of this project is to create a proof of concept based on the Rick and Morty API, using Angular as the main framework. The goal is for each participant to explore and compare different architectures and development methodologies, testing both performance and implementation speed, as well as code organization. This experience will help identify the advantages and challenges of each approach, focusing not on visual design, but on the structure and functionality of the application.</p>
+        </div>
+    </section>
+    <section class="ricks-section pb-20 bg-black">
+        <header class="text-center text-white py-20">
+            <h4 class="text-7xl font-semibold">The Ricks</h4>
+        </header>
+        <div class="flex flex-col justify-center items-center">
+            <div class="ricks-teammate bg-radial-r-green">
+                <article  class="flex gap-6">
+                    <div>
+                        <h5 class="text-3xl font-semibold text-white mb-6">Rick Yuls P02</h5>
+                        <p class="text-white text-xl">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam sunt, possimus, aliquam facilis expedita quasi iure dolorum optio doloremque obcaecati velit officiis saepe labore incidunt sapiente deserunt asperiores, sint odio.</p>
+                    </div>
+                    <figure class=" w-full max-w-[200px] h-[200px] rounded-md overflow-hidden">
+                    <img class="object-cover w-full h-full" ngSrc="https://rickandmortyapi.com/api/character/avatar/1.jpeg" width="200" height="200" alt="yuls">
+                    </figure>
+                </article>
+            </div>
+
+            <div class="ricks-teammate bg-radial-l-green">
+                <article  class="flex gap-6">
+                    <figure class=" w-full max-w-[200px] h-[200px] rounded-md overflow-hidden">
+                        <img class="object-cover w-full h-full" ngSrc="https://rickandmortyapi.com/api/character/avatar/1.jpeg" width="200" height="200" alt="ricky-peral">
+                    </figure>
+                    <div>
+                        <h5 class="text-3xl font-semibold text-white mb-6">Peral Rick K60</h5>
+                        <p class="text-white text-xl">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam sunt, possimus, aliquam facilis expedita quasi iure dolorum optio doloremque obcaecati velit officiis saepe labore incidunt sapiente deserunt asperiores, sint odio.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+</main>
+<footer class="flex flex-col items-center py-10 gap-4 text-white bg-black">
+    <div class="container mx-auto text-center">
+        <span>🧑‍💻 by Jusepemu 2025</span>
+    </div>
+</footer>
