@@ -15,6 +15,9 @@
     "module": "preserve",
     "baseUrl": "./",
     "paths": {
+      "@app": [
+        "src/app"
+      ],
       "@shared/*": [
         "src/app/shared/*"
       ]

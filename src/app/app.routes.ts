@@ -1,16 +1,19 @@
 import { Routes } from '@angular/router';
 import { HomePage } from './home/home';
+import { MainLayout } from '@shared/layouts/main-layout/main-layout';
 
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: 'home',
-        pathMatch: 'full' 
-    },
-    {
-        path: 'home',
-        component: HomePage,
-        title: 'Home'
+        component: MainLayout,
+        children: [
+            { path: '', redirectTo: 'home', pathMatch: 'full' },
+            {
+                path: 'home',
+                component: HomePage,
+                title: 'Home'
+            }
+        ]
     },
     {
         path: 'about',
