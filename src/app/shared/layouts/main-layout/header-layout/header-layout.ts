@@ -14,14 +14,10 @@ import { RouterLink } from '@angular/router';
             </a>
         </figure>
         <ul class="flex gap-4">
-            <li>Characters</li>
-            <li>Episodes</li>
-            <li>My favorites</li>
-            <li>
-                <a routerLink="/about" class="hover:underline">
-                    About
-                </a>
-            </li>
+            <li><a routerLink="/characters" class="hover:underline">Characters</a></li>
+            <li><a routerLink="/episodes" class="hover:underline">Episodes</a></li>
+            <li><a routerLink="/favorites" class="hover:underline">My favorites</a></li>
+            <li><a routerLink="/about" class="hover:underline">About</a></li>
         </ul>
     </nav>
 </header>

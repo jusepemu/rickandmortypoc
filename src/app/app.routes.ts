@@ -12,6 +12,21 @@ export const routes: Routes = [
                 path: 'home',
                 component: HomePage,
                 title: 'Home'
+            },
+            {
+                path: 'characters',
+                loadComponent: () => import('./characters/characters').then(m => m.Characters),
+                title: 'Characters'
+            },
+            {
+                path: 'episodes',
+                loadComponent: () => import('./episodes/episodes').then(m => m.Episodes),
+                title: 'Episodes'
+            },
+            {
+                path: 'favorites',
+                loadComponent: () => import('./favorites/favorites').then(m => m.Favorites),
+                title: 'Favorites'
             }
         ]
     },
