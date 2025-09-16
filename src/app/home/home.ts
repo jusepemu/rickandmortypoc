@@ -1,12 +1,13 @@
-import { NgOptimizedImage } from '@angular/common';
 import { Component } from '@angular/core';
+import { HeroSection } from './hero-section/hero-section';
+import { ChallengeSection } from "./challenge-section/challenge-section";
+import { TeamSection } from "./team-section/team-section";
 
 @Component({
   selector: 'app-home',
-  imports: [NgOptimizedImage],
+  imports: [HeroSection, ChallengeSection, TeamSection],
   templateUrl: './home.html',
-  styleUrl: './home.css'
 })
-export class HomePage {
 
+export class HomePage {
 }
