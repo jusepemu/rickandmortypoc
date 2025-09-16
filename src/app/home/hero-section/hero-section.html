@@ -1,0 +1,21 @@
+<section class="bg-gradient-to-t from-purple-500 to-purple-900 py-20 flex gap-4">
+  <div class="container mx-auto text-white flex flex-col md:flex-row items-center gap-10 h-96">
+    <header class="flex flex-col gap-6 md:1/2 lg:1/3">
+      <h4 class="text-7xl font-semibold">{{ title() }}</h4>
+
+      <p class="text-xl font-light">Explore the multiverse with Rick and Morty. Discover characters, episodes,
+        and fun facts from the most irreverent animated series in the cosmos. Get ready for interdimensional
+        adventures and plenty of sci-fi humor!</p>
+
+      <a class="max-w-2xs p-4 rounded-md bg-white text-black" [href]="buttonMoreInfo().link" target="_blank">
+        {{ buttonMoreInfo().label }}
+      </a>
+    </header>
+
+    <figure>
+      <img
+        src="https://www.freepnglogos.com/uploads/rick-and-morty-png/rick-and-morty-portal-shoes-white-clothing-zavvi-23.png"
+        alt="hero image">
+    </figure>
+  </div>
+</section>
