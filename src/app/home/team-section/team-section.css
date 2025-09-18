@@ -13,11 +13,3 @@
 .bg-radial-l-green {
     background: radial-gradient(ellipse at left, #16a34a, #000000, #000000);
 }
-
-.ricks-teammate {
-    @apply py-20 w-full;
-
-    article {
-        @apply max-w-3xl mx-auto
-    }
-}
