@@ -5,7 +5,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'app-challenge-section',
   imports: [NgOptimizedImage],
   templateUrl: './challenge-section.html',
-  styleUrl: './challenge-section.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChallengeSection {
