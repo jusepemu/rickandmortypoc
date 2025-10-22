@@ -1,14 +1,12 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CharacterUseCases } from './character-use-cases';
-import { CharacterRepository } from './character-repository';
-import { CharacterDataClient } from './character-data-client';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { CharacterCard } from "./character-card/character-card";
 
 @Component({
   selector: 'app-characters',
-  imports: [],
+  imports: [CharacterCard],
   templateUrl: './characters.html',
-  styleUrl: './characters.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Characters {

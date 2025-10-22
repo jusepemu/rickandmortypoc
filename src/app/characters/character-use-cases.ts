@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { CHARACTER_REPOSITORY } from './character-di';
+import { CHARACTER_REPOSITORY } from './di';
 
 /**
  * Inplementation of use cases related to characters usign the repository like a token injection.
