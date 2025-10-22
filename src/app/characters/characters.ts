@@ -12,4 +12,8 @@ import { CharacterCard } from "./character-card/character-card";
 export class Characters {
   private characterUseCases = inject(CharacterUseCases);
   characters = toSignal(this.characterUseCases.getAll(), { initialValue: null });
+
+  addToFavorites(characterId: string) {
+    console.log(`Adding character with ID ${characterId} to favorites.`);
+  }
 }
