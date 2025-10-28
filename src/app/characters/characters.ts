@@ -17,3 +17,4 @@ export class Characters {
     console.log(`Adding character with ID ${characterId} to favorites.`);
   }
 }
+
