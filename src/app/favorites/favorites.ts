@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { FavoritesStore } from './favorites-store';
 
 @Component({
   selector: 'app-favorites',
@@ -8,5 +9,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Favorites {
-
+  private favoritesStateService = inject(FavoritesStore)
+  protected characters = this.favoritesStateService.getAllFavoritesCharacters()
 }
