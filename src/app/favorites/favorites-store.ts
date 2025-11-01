@@ -1,48 +1,48 @@
-import { afterNextRender, computed, Injectable, signal, WritableSignal } from "@angular/core";
-import { CharacterDetailEntity } from "../characters/character-detail/character-detail-entity";
+import { afterNextRender, computed, Injectable, signal, WritableSignal } from '@angular/core';
+import { CharacterDetailEntity } from '../characters/character-detail/character-detail-entity';
+import { CharacterEntity } from '../characters/character-entity';
 
 type Favorites = {
-  characters: CharacterDetailEntity[]
-}
+  characters: CharacterEntity[];
+};
 
-const FAVORITE_STORAGE_KEY = 'favorites'
+const FAVORITE_STORAGE_KEY = 'favorites';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FavoritesStore {
   private favoritesState: WritableSignal<Favorites> = signal({
-    characters: []
-  })
+    characters: [],
+  });
 
   constructor() {
     afterNextRender(() => {
-      const stored = localStorage.getItem(FAVORITE_STORAGE_KEY)
+      const stored = localStorage.getItem(FAVORITE_STORAGE_KEY);
 
-      if (!stored) return
+      if (!stored) return;
 
-      const parsed = JSON.parse(stored)
-      this.favoritesState.set(parsed)
-    })
+      const parsed = JSON.parse(stored);
+      this.favoritesState.set(parsed);
+    });
   }
 
   getAllFavoritesCharacters() {
-    return computed(() => this.favoritesState().characters)
+    return computed(() => this.favoritesState().characters);
   }
 
-  addCharacterToFavorite(character: CharacterDetailEntity) {
+  addCharacterToFavorite(character: CharacterEntity) {
     this.favoritesState.update((favorites) => ({
       ...favorites,
-      characters: [...favorites.characters, character]
-    }))
+      characters: [...favorites.characters, character],
+    }));
 
-    localStorage.setItem(FAVORITE_STORAGE_KEY, JSON.stringify(this.favoritesState()))
+    localStorage.setItem(FAVORITE_STORAGE_KEY, JSON.stringify(this.favoritesState()));
   }
 
   clearFavorites() {
-    this.favoritesState.set({ characters: [] })
+    this.favoritesState.set({ characters: [] });
 
-    localStorage.clear()
+    localStorage.clear();
   }
 }
-
