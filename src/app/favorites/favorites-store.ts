@@ -15,6 +15,7 @@ export class FavoritesStore {
   private favoritesState: WritableSignal<Favorites> = signal({
     characters: [],
   });
+  private charactersId: WritableSignal<Set<CharacterDetailEntity['id']>> = signal(new Set());
 
   constructor() {
     afterNextRender(() => {
@@ -24,11 +25,16 @@ export class FavoritesStore {
 
       const parsed = JSON.parse(stored);
       this.favoritesState.set(parsed);
+      this.charactersId.set(new Set(parsed.characters.map((char: CharacterEntity) => char.id)));
     });
   }
 
   getAllFavoritesCharacters() {
     return computed(() => this.favoritesState().characters);
+  }
+
+  includeCharacterInFavorites(characterId: CharacterDetailEntity['id']) {
+    return this.charactersId().has(characterId);
   }
 
   addCharacterToFavorite(character: CharacterEntity) {
@@ -37,6 +43,17 @@ export class FavoritesStore {
       characters: [...favorites.characters, character],
     }));
 
+    this.charactersId().add(character.id);
+    localStorage.setItem(FAVORITE_STORAGE_KEY, JSON.stringify(this.favoritesState()));
+  }
+
+  removeCharacterFromFavorites(characterId: CharacterDetailEntity['id']) {
+    this.favoritesState.update((favorites) => ({
+      ...favorites,
+      characters: favorites.characters.filter((char) => char.id !== characterId),
+    }));
+
+    this.charactersId().delete(characterId);
     localStorage.setItem(FAVORITE_STORAGE_KEY, JSON.stringify(this.favoritesState()));
   }
 

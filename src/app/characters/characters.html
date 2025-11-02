@@ -4,7 +4,9 @@
       @for (character of characters()?.results; track character.id) {
         <app-character-card
           [character]="character"
+          [isFavorite]="existsInFavorites(character.id!)"
           (onAddToFavorites)="addToFavorites(character!)"
+          (onRemoveFromFavorites)="removeToFavorites(character!)"
         />
       }
     </section>

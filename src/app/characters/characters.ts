@@ -16,7 +16,15 @@ export class Characters {
   private characterUseCases = inject(CharacterUseCases);
   characters = toSignal(this.characterUseCases.getAll(), { initialValue: null });
 
+  existsInFavorites(characterId: string) {
+    return this.favoritesStoreService.includeCharacterInFavorites(characterId);
+  }
+
   addToFavorites(character: CharacterEntity) {
     this.favoritesStoreService.addCharacterToFavorite(character);
+  }
+
+  removeToFavorites(character: CharacterEntity) {
+    this.favoritesStoreService.removeCharacterFromFavorites(character.id);
   }
 }
