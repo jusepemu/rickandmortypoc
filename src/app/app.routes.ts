@@ -16,7 +16,7 @@ export const routes: Routes = [
       },
       {
         path: 'characters',
-        loadComponent: () => import('./characters/characters').then((m) => m.Characters),
+        loadComponent: () => import('./characters/character-list/character-list').then((m) => m.CharacterList),
         title: 'Characters',
       },
       {

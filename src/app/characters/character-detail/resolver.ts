@@ -1,11 +1,13 @@
 import { inject } from '@angular/core';
 import { ResolveFn, ActivatedRouteSnapshot } from '@angular/router';
-import { CharacterUseCases } from '../character-use-cases';
-import { CharacterEntity } from '../character-entity';
+import { CharacterService } from './services/character-service';
+import { CharacterDetailEntity } from './character-detail-entity';
 
-export const characterDetailResolver = (route: ActivatedRouteSnapshot) => {
-  const characterUseCases = inject(CharacterUseCases);
+export const characterDetailResolver: ResolveFn<CharacterDetailEntity> = (
+  route: ActivatedRouteSnapshot
+) => {
+  const characterService = inject(CharacterService);
   const characterId = route.paramMap.get("characterId");
-  
-  return characterUseCases.getById(characterId!);
-}
+
+  return characterService.getById(characterId!);
+};
