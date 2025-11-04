@@ -1,16 +1,17 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FavoritesStore } from './favorites-store';
+import { FavoritesEmpty } from './components/FavoritesEmpty';
 
 @Component({
   selector: 'app-favorites',
-  imports: [],
+  imports: [FavoritesEmpty],
   templateUrl: './favorites.html',
   styleUrl: './favorites.css',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Favorites {
-  private favoritesStateService = inject(FavoritesStore)
-  protected characters = this.favoritesStateService.getAllFavoritesCharacters()
+  private favoritesStateService = inject(FavoritesStore);
+  protected characters = this.favoritesStateService.getAllFavoritesCharacters();
 
   protected getStatusClasses(status: string): string {
     const statusLower = status.toLowerCase();
