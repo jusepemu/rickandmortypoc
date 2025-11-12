@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CharactersService } from './services/characters-service';
-import { CharacterCard } from './components/character-card/character-card';
+import { CharacterCard } from '../../shared/components/cards/character-card/character-card';
 import { FavoritesStore } from '../../favorites/favorites-store';
 import { CharacterEntity } from '../character-entity';
 
