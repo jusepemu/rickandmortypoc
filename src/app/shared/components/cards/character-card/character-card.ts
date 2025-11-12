@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, input, output } from '@angular/core';
-import { CharacterEntity } from '../../../character-entity';
+import { CharacterEntity } from '../../../../characters/character-entity';
 
 @Component({
   selector: 'app-character-card',
