@@ -1,4 +1,13 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  input,
+  OnDestroy,
+  output,
+  ViewChild,
+} from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { EpisodeEntity } from '../../../episode-entity';
 
@@ -151,10 +160,36 @@ import { EpisodeEntity } from '../../../episode-entity';
           }
         </div>
       }
+      <span #limitScroll class="invisible"></span>
     </section>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EpisodesGrid {
+export class EpisodesGrid implements AfterViewInit, OnDestroy {
+  @ViewChild('limitScroll', { static: true }) limitScroll!: ElementRef<HTMLElement>;
+  private observer!: IntersectionObserver;
+
+  loadMoreEpisodes = output();
   episodes = input<EpisodeEntity[] | undefined>([]);
+
+  ngAfterViewInit(): void {
+    this.observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          this.loadMoreEpisodes.emit();
+        }
+      },
+      {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.5,
+      },
+    );
+
+    this.observer.observe(this.limitScroll.nativeElement);
+  }
+
+  ngOnDestroy(): void {
+    if (this.observer) this.observer.disconnect();
+  }
 }

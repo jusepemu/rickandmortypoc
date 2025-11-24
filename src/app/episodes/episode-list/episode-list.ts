@@ -1,14 +1,26 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  effect,
+  inject,
+  signal,
+  WritableSignal,
+} from '@angular/core';
 import { EpisodesGrid } from './components/episodes-grid/episodes-grid';
 import { EpisodesService } from './services/episodes-service';
+import { PaginationDTO } from '@shared/models/pagination';
+import { EpisodeEntity } from '../episode-entity';
 
 @Component({
   selector: 'app-episodes',
   imports: [EpisodesGrid],
   template: `
     <main class="container py-10 px-4 lg:px-10 mx-auto">
-      @if (episodes() != null) {
-        <app-episodes-grid [episodes]="episodes()?.results" />
+      @if (episodes() != null && episodes()?.results?.length) {
+        <app-episodes-grid
+          [episodes]="episodes()?.results"
+          (loadMoreEpisodes)="getMoreEpisodes()"
+        />
       } @else {
         <!-- Loading State -->
         <div class="flex min-h-[500px] flex-col items-center justify-center">
@@ -64,5 +76,37 @@ import { EpisodesService } from './services/episodes-service';
 })
 export class EpisodeList {
   private episodeService = inject(EpisodesService);
-  protected episodes = this.episodeService.getAll();
+  private page = signal(1);
+  protected episodes: WritableSignal<PaginationDTO<EpisodeEntity>> = signal({
+    info: {
+      count: 0,
+      pages: 0,
+      next: null,
+      prev: null,
+    },
+    results: [],
+  });
+
+  constructor() {
+    this.loadEpisodes();
+  }
+
+  protected getMoreEpisodes() {
+    if (this.page() < this.episodes()?.info?.pages) {
+      this.page.update((page) => page + 1);
+      this.loadEpisodes(this.page());
+    }
+  }
+
+  private loadEpisodes(page: number = 1) {
+    this.episodeService.getAll(page).subscribe((episodes) => {
+      const isLastPage = this.page() === episodes?.info?.pages;
+      if (!episodes?.results.length || episodes === null || isLastPage) return;
+
+      this.episodes.update((current) => ({
+        info: episodes?.info,
+        results: [...current.results, ...episodes?.results],
+      }));
+    });
+  }
 }
